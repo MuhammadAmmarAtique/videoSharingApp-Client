@@ -1,12 +1,14 @@
-import './App.css'
+import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
+import { Home } from "./pages/index";
 
 function App() {
-
   return (
-   <>
-   <h5 className="text-3xl font-bold underline">Configured tailwind css in my react project</h5>
-   </>
-  )
+    <Router>
+      <Routes>
+        <Route path="/" element={<Home />} />
+      </Routes>
+    </Router>
+  );
 }
 
-export default App
+export default App;
