@@ -8,8 +8,8 @@ function App() {
       <Routes>
         <Route path="/" element={<Home />} />
         <Route path="/sign-up" element={<Signup />} />
-        <ToastContainer position="top-right"/>
       </Routes>
+        <ToastContainer position="top-right"/>
     </Router>
   );
 }
