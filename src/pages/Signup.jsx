@@ -40,104 +40,126 @@ const Signup = () => {
 
   return (
     <div className="h-screen overflow-y-auto bg-[#121212] text-white">
-      <div className="mx-auto my-8 flex w-full max-w-sm flex-col px-4">
-        <div className="mb-6 w-full text-center text-2xl font-semibold">
-          Sign up
-        </div>
+    <div className="mx-auto my-8 flex w-full max-w-sm flex-col px-4">
+      <div className="mb-6 w-full text-center text-2xl font-semibold">
+        Sign up
+      </div>
 
-        {/* Integrated React Hook Form */}
-        <form onSubmit={handleSubmit(handleRegister)} >
-          {/* Username */}
-          <label htmlFor="username" className="mb-1 inline-block text-gray-300">
+      {/* Integrated React Hook Form */}
+      <form onSubmit={handleSubmit(handleRegister)} className="space-y-4">
+        {/* Username */}
+        <div>
+          <label htmlFor="username" className="mb-1 block text-gray-300">
             Username*
           </label>
           <input
             id="username"
             type="text"
             placeholder="Enter your username"
-            className="mb-4 rounded-lg border bg-transparent px-3 py-2"
-            {...register('username', { required: true })}
+            className="w-full rounded-lg border bg-transparent px-3 py-2"
+            {...register("username", { required: true })}
           />
-          {errors.username && <p>Username is must required.</p>}
+          {errors.username && (
+            <p className="mt-1 text-sm text-red-500">
+              Username is required.
+            </p>
+          )}
+        </div>
 
-          {/* Full Name */}
-          <label htmlFor="fullName" className="mb-1 inline-block text-gray-300">
+        {/* Full Name */}
+        <div>
+          <label htmlFor="fullName" className="mb-1 block text-gray-300">
             Full Name*
           </label>
           <input
             id="fullName"
             type="text"
             placeholder="Enter your full name"
-            className="mb-4 rounded-lg border bg-transparent px-3 py-2"
-            {...register('fullName', { required: true })}
+            className="w-full rounded-lg border bg-transparent px-3 py-2"
+            {...register("fullName", { required: true })}
           />
-          {errors.fullName && <p>Full Name is must required.</p>}
+          {errors.fullName && (
+            <p className="mt-1 text-sm text-red-500">
+              Full Name is required.
+            </p>
+          )}
+        </div>
 
-
-          {/* Email */}
-          <label htmlFor="email" className="mb-1 inline-block text-gray-300">
+        {/* Email */}
+        <div>
+          <label htmlFor="email" className="mb-1 block text-gray-300">
             Email*
           </label>
           <input
             id="email"
             type="email"
             placeholder="Enter your email"
-            className="mb-4 rounded-lg border bg-transparent px-3 py-2"
-            {...register('email', { required: true })}
+            className="w-full rounded-lg border bg-transparent px-3 py-2"
+            {...register("email", { required: true })}
           />
-          {errors.email && <p>Email is must required.</p>}
+          {errors.email && (
+            <p className="mt-1 text-sm text-red-500">Email is required.</p>
+          )}
+        </div>
 
-
-          {/* Password */}
-          <label htmlFor="password" className="mb-1 inline-block text-gray-300">
+        {/* Password */}
+        <div>
+          <label htmlFor="password" className="mb-1 block text-gray-300">
             Password*
           </label>
           <input
             id="password"
             type="password"
             placeholder="Enter your password"
-            className="mb-4 rounded-lg border bg-transparent px-3 py-2"
-            {...register('password', { required: true })}
+            className="w-full rounded-lg border bg-transparent px-3 py-2"
+            {...register("password", { required: true })}
           />
-          {errors.password && <p>Password is must required.</p>}
+          {errors.password && (
+            <p className="mt-1 text-sm text-red-500">Password is required.</p>
+          )}
+        </div>
 
-
-          {/* Avatar */}
-          <label htmlFor="avatar" className="mb-1 inline-block text-gray-300">
+        {/* Avatar */}
+        <div>
+          <label htmlFor="avatar" className="mb-1 block text-gray-300">
             Avatar*
           </label>
           <input
             id="avatar"
             type="file"
-            placeholder="Enter avatar URL"
-            className="mb-4 rounded-lg border bg-transparent px-3 py-2"
-            {...register('avatar', { required: true })}
+            className="w-full rounded-lg border bg-transparent px-3 py-2"
+            {...register("avatar", { required: true })}
           />
-          {errors.avatar && <p>Avatar is must required.</p>}
+          {errors.avatar && (
+            <p className="mt-1 text-sm text-red-500">Avatar is required.</p>
+          )}
+        </div>
 
-
-          {/* Cover Image */}
-          <label htmlFor="coverImg" className="mb-1 inline-block text-gray-300">
+        {/* Cover Image */}
+        <div>
+          <label htmlFor="coverImg" className="mb-1 block text-gray-300">
             Cover Image
           </label>
           <input
             id="coverImg"
             type="file"
-            placeholder="Enter cover image URL"
-            className="mb-4 rounded-lg border bg-transparent px-3 py-2"
-            {...register('coverImage')}
-
+            className="w-full rounded-lg border bg-transparent px-3 py-2"
+            {...register("coverImage")}
           />
+        </div>
 
-          {/* Submit Button */}
-          <button disabled={isLoading} type="submit" className="mt-4 bg-[#ae7aff] px-4 py-3 text-black">
-            {isLoading ? "Registering" : "Register"}
-          </button>
-        </form>
-
-      </div>
+        {/* Submit Button */}
+        <button
+          disabled={isLoading}
+          type="submit"
+          className="mt-4 w-full bg-[#ae7aff] px-4 py-3 text-black rounded-lg"
+        >
+          {isLoading ? "Registering" : "Register"}
+        </button>
+      </form>
     </div>
-  );
+  </div>
+);
 };
 
 export default Signup;
