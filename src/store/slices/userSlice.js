@@ -5,19 +5,19 @@ import { toast } from "react-toastify";
 const userSlice = createSlice({
   name: "user",
   initialState: {
-    isLoading: false,
+    loading: false,
     isAuthenticated: false,
     user: {},
   },
   reducers: {
     // 1) signup reducers
     signupRequest(state, action) {
-      state.isLoading = true;
+      state.loading = true;
       state.isAuthenticated = false;
       state.user = {};
     },
     signupSuccess(state, action) {
-      state.isLoading = false;
+      state.loading = false;
       state.isAuthenticated = true;
       state.user = action.payload;
     },
@@ -28,7 +28,7 @@ const userSlice = createSlice({
     },
     // Reducer for clearing errors
     clearAllErrors(state, action) {
-    state.isLoading = false,
+    state.loading = false,
     state.isAuthenticated = state.isAuthenticated,
     state.user = state.user;
     },

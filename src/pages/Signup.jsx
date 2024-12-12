@@ -13,7 +13,7 @@ const Signup = () => {
   } = useForm();
 
   const dispatch = useDispatch()
-  const { isAuthenticated, isLoading } =  useSelector((state) => state.user)
+  const { isAuthenticated, loading } =  useSelector((state) => state.user)
   const navigateTo = useNavigate()
 
   const handleRegister = (data) => {   
@@ -150,11 +150,11 @@ const Signup = () => {
 
         {/* Submit Button */}
         <button
-          disabled={isLoading}
+          disabled={loading}
           type="submit"
           className="mt-4 w-full bg-[#ae7aff] px-4 py-3 text-black rounded-lg"
         >
-          {isLoading ? "Registering" : "Register"}
+          {loading ? "Registering" : "Register"}
         </button>
       </form>
     </div>
