@@ -22,7 +22,24 @@ const userSlice = createSlice({
       state.user = action.payload;
     },
     signupFailed(state, action) {
-      state.isLoading = false,
+      state.loading = false,
+      state.isAuthenticated = false,
+      state.user = {};
+    },
+    
+    // 2) Login reducers
+     LoginRequest(state, action) {
+      state.loading = true;
+      state.isAuthenticated = false;
+      state.user = {};
+    },
+    LoginSuccess(state, action) {
+      state.loading = false;
+      state.isAuthenticated = true;
+      state.user = action.payload;
+    },
+    LoginFailed(state, action) {
+      state.loading = false,
       state.isAuthenticated = false,
       state.user = {};
     },
@@ -62,6 +79,27 @@ export const registerUser = (data) => async (dispatch) => {
       toast.error(error.response.data.message);
       console.log("err:::::", error.response.data.message);
     }
+    dispatch(userSlice.actions.clearAllErrors());
+  }
+};
+
+export const loginUser = (data) => async (dispatch) => {
+  dispatch(userSlice.actions.LoginRequest());
+  try {
+    const response = await axios.post(
+      "http://localhost:7000/api/v1/users/login",
+      data,
+      {
+        withCredentials: true,
+        headers: { "Content-Type": "application/json" },
+      }
+    );
+    dispatch(userSlice.actions.LoginSuccess(response.data.data));
+    toast.success(response.data.message);
+    dispatch(userSlice.actions.clearAllErrors());
+  } catch (error) {
+    dispatch(userSlice.actions.LoginFailed());
+    toast.error(error.response.data.message);
     dispatch(userSlice.actions.clearAllErrors());
   }
 };
