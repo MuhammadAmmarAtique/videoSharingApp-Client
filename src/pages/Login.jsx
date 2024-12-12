@@ -2,7 +2,7 @@ import React, { useEffect } from "react";
 import { useForm } from "react-hook-form";
 import { useDispatch, useSelector } from "react-redux";
 import { useNavigate } from "react-router-dom";
-import { LoginUser } from "../store/slices/userSlice";
+import { loginUser } from "../store/slices/userSlice";
 
 const Login = () => {
   const { loading, isAuthenticated } = useSelector((state) => state.user);
@@ -20,7 +20,7 @@ const Login = () => {
     const formData = new FormData();
     formData.append("email", data.email);
     formData.append("password", data.password);
-    dispatch(LoginUser(formData));
+    dispatch(loginUser(formData));
   };
 
   useEffect(() => {
